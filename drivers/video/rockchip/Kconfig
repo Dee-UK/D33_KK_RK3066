@@ -1,0 +1,65 @@
+menuconfig FB_ROCKCHIP
+        tristate "Frame buffer support for Rockchip "
+        depends on FB
+        select FB_CFB_FILLRECT
+        select FB_CFB_COPYAREA
+        select FB_CFB_IMAGEBLIT
+        ---help---
+          Framebuffer driver for rockchip based platform
+
+choice
+        bool "Dual display ploy select"
+	depends on FB_ROCKCHIP
+	default NO_DUAL_DISP
+        help
+	  If you use dual lcdc for dual display ,select "implement dual display in kernel with dual lcdc"
+	  If you use one lcdc like rk2928 or one lcdc with RK Jetta,select "one lcdc dual output display interface support"
+
+config DUAL_LCDC_DUAL_DISP_IN_KERNEL
+        bool "implement dual display in kernel with dual lcdc"
+        depends on FB_ROCKCHIP
+        help
+          select y will implement dual screen display in kernel
+
+config ONE_LCDC_DUAL_OUTPUT_INF
+        bool "one lcdc dual output display interface support"
+        depends on FB_ROCKCHIP
+        help
+          select y if on platform like rk2928 which have one lcdc but two output interface
+config NO_DUAL_DISP
+	bool "NO dual display needed"
+	depends on FB_ROCKCHIP
+	help
+	  No dual display needed
+endchoice
+
+config THREE_FB_BUFFER
+        bool "Three fb buffer support"
+        depends on FB_ROCKCHIP
+        default y
+        help
+           select y if android support three buffer,like Jelly Bean
+
+config DISPLAY_KEY_LED_CONTROL
+	bool "Enable LED control for display interface."
+	depends on FB_ROCKCHIP
+	default n
+	help
+	   slect y if you need use led to indicate display status.
+
+config FB_ROCKCHIP_MID
+        bool "Frame buffer support for Rockchip MID"
+	depends on FB_ROCKCHIP
+	default n
+        help
+          Frame buffer support for Rockchip MID.
+
+source "drivers/video/rockchip/lcdc/Kconfig"
+source "drivers/video/rockchip/screen/Kconfig"
+source "drivers/video/rockchip/hdmi/Kconfig"
+source "drivers/video/rockchip/tvencoder/Kconfig"
+source "drivers/video/rockchip/transmitter/Kconfig"
+source "drivers/video/rockchip/rga/Kconfig"
+source "drivers/video/rockchip/iep/Kconfig"
+source "drivers/video/rockchip/rga2/Kconfig"
+
