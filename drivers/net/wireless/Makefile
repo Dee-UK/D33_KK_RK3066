@@ -8,6 +8,7 @@ obj-$(CONFIG_BCM4319)   += bcm4319/
 obj-$(CONFIG_RTL8192CU) += rkusbwifi/
 obj-$(CONFIG_RTL8192DU) += rkusbwifi/
 obj-$(CONFIG_RTL8188EU)	+= rkusbwifi/
+obj-$(CONFIG_RTL8189ES)	+= rkusbwifi/
 obj-$(CONFIG_RTL8723AU)	+= rkusbwifi/
 obj-$(CONFIG_RTL8723BU) += rkusbwifi/
 obj-$(CONFIG_RT5370)	+= rkusbwifi/

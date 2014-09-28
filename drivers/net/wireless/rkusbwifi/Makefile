@@ -6,6 +6,7 @@ rk_cfg := wifi_power.o wifi_power_usb.o wifi_power_ops.o
 rkcfg-y += $(rk_cfg)
 
 obj-$(CONFIG_RTL8188EU) += rkcfg.o rtl8188eu/
+obj-$(CONFIG_RTL8189ES) += rkcfg.o rtl8189es/
 obj-$(CONFIG_RTL8192CU) += rkcfg.o rtl8192cu/
 obj-$(CONFIG_RTL8723AU) += rkcfg.o rtl8723au/
 obj-$(CONFIG_RTL8723BU) += rkcfg.o rtl8723bu/
